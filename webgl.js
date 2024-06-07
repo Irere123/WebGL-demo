@@ -10,11 +10,9 @@ function main() {
   const canvas = document.querySelector("#glcanvas");
 
   //   Initiliaze the GL Context
-
   const gl = canvas.getContext("webgl");
 
   //   Only continue if WebGL is available and working
-
   if (gl === null) {
     alert(
       "Unable to initialize WebGL. Your browser or machine may not support it."
@@ -23,14 +21,13 @@ function main() {
     return;
   }
 
-  //   Set clear color to black, fully opaque
+  // Set clear color to black, fully opaque
   gl.clearColor(0.0, 0.0, 0.0, 1.0);
 
-  //   clear the color buffer with specified clear color
+  // clear the color buffer with specified clear color
   gl.clear(gl.COLOR_BUFFER_BIT);
 
   // Vertex shader program
-
   const vsSource = `
   attribute vec4 aVertexPosition;
   attribute vec4 aVertexColor;
@@ -45,8 +42,8 @@ function main() {
     vColor = aVertexColor;
   }
 `;
-  // Fragment shader program
 
+  // Fragment shader program
   const fsSource = `
   varying lowp vec4 vColor;
 
@@ -78,10 +75,9 @@ function main() {
   // builds all the objects we'll be drawing
   const buffers = initBuffers(gl);
 
-  // Draw the scene repeatedly
-
   let then = 0;
 
+  // Draw the scene repeatedly
   function render(now) {
     now *= 0.001;
     deltaTime = now - then;
